@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>form</title>
+  </head>
+  <body>
+    <form class="" action="index.html" method="post" name="google-sheet">
+      <input type="text" name="name" placeholder="name" value="">
+      <input type="text" name="phone" placeholder="phone" value="">
+      <input type="text" name="email" placeholder="email" value="">
+      <button type="submit" name="button">submit</button>
+    </form>
+
+    <script>
+               const scriptURL = 'https://script.google.com/macros/s/AKfycbzL3Vrh46FG9f6gLmmVRFmUbjeABv5m0EWvpcEdGlylJYMg4V_yeCg_hg/exec'
+               const form = document.forms['google-sheet']
+
+               form.addEventListener('submit', e => {
+                 e.preventDefault()
+                 fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                   .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                   .catch(error => console.error('Error!', error.message))
+               })
+             </script>
+
+  </body>
+</html>
